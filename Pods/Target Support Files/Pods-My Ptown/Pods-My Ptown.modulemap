@@ -1,0 +1,6 @@
+module Pods_My_Ptown {
+  umbrella header "Pods-My Ptown-umbrella.h"
+
+  export *
+  module * { export * }
+}
