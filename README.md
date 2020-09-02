@@ -1,8 +1,20 @@
 # My-Ptown
 
-"My Ptown" is my own iOS project that I currently work on. My Ptown app is basically a city guide for the people who visit Provincetown, Massachusetts, USA. In the app, people can see the point of interests in town as well as the events and many useful information. I aim to publish it on App Store soon.
+"My Ptown" is my own iOS project that I currently work on. My Ptown app is basically a city guide for the people who visit Provincetown, Massachusetts, USA. It has published on the App Store in August 2020.
+
+My Ptown app includes everything you need on your visit to Provincetown.
+
+🍏 Choose any category from the list and start discovering stunning Ptown.
+
+🍏 Get the best advices to make your day in Provincetown.
+
+🍏 Get directions for any place you want.
+
+🍏 Create your own favorites page.
 
 Used technologies:
 Sketch, Swift, MVVM, RESTful API, CocoaPods
 
-<img width="698" alt="myptown" src="https://user-images.githubusercontent.com/32302808/88489767-1e1a2100-cf9f-11ea-89c4-7c85cec8defd.png">
+App Store link:  https://apps.apple.com/us/app/my-ptown/id1527977001
+
+![myptown-appstore](https://user-images.githubusercontent.com/32302808/90985961-ff9c4b00-e587-11ea-953c-baf5ce01da3c.png)
