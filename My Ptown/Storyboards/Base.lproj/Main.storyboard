@@ -418,6 +418,33 @@
             </objects>
             <point key="canvasLocation" x="2347.5" y="925"/>
         </scene>
+        <!--Category Map View Controller-->
+        <scene sceneID="S4K-sD-amf">
+            <objects>
+                <viewController storyboardIdentifier="CategoryMapViewController" id="2wz-Ua-GzJ" customClass="CategoryMapViewController" customModule="My_Ptown" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="azc-zM-H5B">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cx7-iz-iQy">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="cx7-iz-iQy" firstAttribute="leading" secondItem="udO-gG-ybT" secondAttribute="leading" id="87H-oS-VXU"/>
+                            <constraint firstItem="cx7-iz-iQy" firstAttribute="trailing" secondItem="udO-gG-ybT" secondAttribute="trailing" id="Zwx-D2-U7o"/>
+                            <constraint firstItem="cx7-iz-iQy" firstAttribute="top" secondItem="azc-zM-H5B" secondAttribute="top" id="bDJ-U0-umL"/>
+                            <constraint firstAttribute="bottom" secondItem="cx7-iz-iQy" secondAttribute="bottom" id="ta7-C5-EA8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="udO-gG-ybT"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cjC-aR-cQG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0hg-0W-gIZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3436" y="925"/>
+        </scene>
         <!--Category View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -521,10 +548,22 @@
                                 <rect key="frame" x="188.66666666666666" y="429.66666666666669" width="37" height="37"/>
                                 <color key="color" red="0.99607843139999996" green="0.20392156859999999" blue="0.43137254899999999" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Kc-1C-PHC">
+                                <rect key="frame" x="333.33333333333331" y="796.33333333333337" width="50.666666666666686" height="45.666666666666629"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" image="map.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="33" scale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="openMapButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4sE-zZ-9L2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4Kc-1C-PHC" secondAttribute="bottom" constant="20" id="30X-uu-Mgc"/>
                             <constraint firstItem="AZB-zC-lFr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Cjm-HO-qlI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4Kc-1C-PHC" secondAttribute="trailing" constant="30" id="JKC-e7-Hgw"/>
                             <constraint firstItem="UTD-of-cLP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TON-t2-HXE"/>
                             <constraint firstItem="AZB-zC-lFr" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="Wo5-lS-NqN"/>
                             <constraint firstItem="AZB-zC-lFr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="kan-Uw-7d4"/>
@@ -821,6 +860,7 @@
     <resources>
         <image name="Tranquil" width="1440" height="900"/>
         <image name="house" catalog="system" width="128" height="110"/>
+        <image name="map.fill" catalog="system" width="128" height="113"/>
         <image name="mappin.circle" catalog="system" width="128" height="121"/>
         <image name="noData" width="256" height="256"/>
         <image name="person.crop.circle" catalog="system" width="128" height="121"/>

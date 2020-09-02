@@ -22,6 +22,7 @@
 		00460A0823EF10B6002DE262 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00460A0623EF10B6002DE262 /* CategoryTableViewCell.swift */; };
 		004E40B623ED5884008742AF /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004E40B523ED5884008742AF /* CategoryData.swift */; };
 		0058943B24C5A204009F9139 /* AttractionsMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0058943A24C5A204009F9139 /* AttractionsMenuViewModel.swift */; };
+		005A5AD224FF88E90008CB44 /* CategoryMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005A5AD124FF88E90008CB44 /* CategoryMapViewController.swift */; };
 		006F109C240BFDE800DD8FB9 /* VenueData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F109B240BFDE800DD8FB9 /* VenueData.swift */; };
 		0083F7E024C3034F00C14576 /* SuggestionsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083F7DF24C3034F00C14576 /* SuggestionsData.swift */; };
 		0083F7E224C303A500C14576 /* SuggestionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083F7E124C303A500C14576 /* SuggestionsViewModel.swift */; };
@@ -55,6 +56,7 @@
 		00460A0623EF10B6002DE262 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		004E40B523ED5884008742AF /* CategoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryData.swift; sourceTree = "<group>"; };
 		0058943A24C5A204009F9139 /* AttractionsMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionsMenuViewModel.swift; sourceTree = "<group>"; };
+		005A5AD124FF88E90008CB44 /* CategoryMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMapViewController.swift; sourceTree = "<group>"; };
 		006F109B240BFDE800DD8FB9 /* VenueData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueData.swift; sourceTree = "<group>"; };
 		0083F7DF24C3034F00C14576 /* SuggestionsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsData.swift; sourceTree = "<group>"; };
 		0083F7E124C303A500C14576 /* SuggestionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsViewModel.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				0004E54F23EC48480082F5BF /* CategoryViewController.swift */,
 				0026EE7D23F1356B001349BE /* VenueViewContoller.swift */,
 				00F7E5F724E2BE03006B788E /* FavouritesViewController.swift */,
+				005A5AD124FF88E90008CB44 /* CategoryMapViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				00DD415424CE20AD0091584C /* Constants.swift in Sources */,
 				004E40B623ED5884008742AF /* CategoryData.swift in Sources */,
 				0083F7E024C3034F00C14576 /* SuggestionsData.swift in Sources */,
+				005A5AD224FF88E90008CB44 /* CategoryMapViewController.swift in Sources */,
 				0004E54C23EC48480082F5BF /* AppDelegate.swift in Sources */,
 				00F7E5FA24E2BE35006B788E /* FavouritesViewModel.swift in Sources */,
 				0083F7E224C303A500C14576 /* SuggestionsViewModel.swift in Sources */,

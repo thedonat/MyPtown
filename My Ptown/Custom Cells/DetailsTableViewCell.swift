@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import Lottie
-
+    
 class DetailsTableViewCell: UITableViewCell {
     //MARK: -Properties
     @IBOutlet weak var favButton: UIButton!

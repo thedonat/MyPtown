@@ -69,6 +69,11 @@ class CategoryViewController: UIViewController, UIScrollViewDelegate {
         activityIndicator.stopAnimating()
         activityIndicator.isHidden = true
     }
+    @IBAction func openMapButtonPressed(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mapVC = storyboard.instantiateViewController(withIdentifier: "CategoryMapViewController") as! CategoryMapViewController
+        navigationController?.pushViewController(mapVC, animated: true)
+    }
 }
 //MARK: -UITableViewDataSource
 extension CategoryViewController: UITableViewDataSource {
