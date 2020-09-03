@@ -14,6 +14,7 @@ class CategoryViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var categoryTableView: UITableView!
     @IBOutlet weak var menuTopImage: UIImageView!
     @IBOutlet weak var menuNameLabel: UILabel!
+    @IBOutlet weak var openMapButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var categoryListViewModel: CategoryListViewModel = CategoryListViewModel()
     var headerView: UIView!
@@ -60,6 +61,7 @@ class CategoryViewController: UIViewController, UIScrollViewDelegate {
     }
     
     private func congigureUI() {
+        openMapButton.isHidden = false
         if let menuImageUrl = self.categoryListViewModel.getMenuImage, let menuName = self.categoryListViewModel.getMenuName {
             let url = URL(string: menuImageUrl)
             menuTopImage.kf.setImage(with: url, placeholder: UIImage(named: "unicorn"))
@@ -73,6 +75,7 @@ class CategoryViewController: UIViewController, UIScrollViewDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mapVC = storyboard.instantiateViewController(withIdentifier: "CategoryMapViewController") as! CategoryMapViewController
         navigationController?.pushViewController(mapVC, animated: true)
+        mapVC.categoryAddresses = categoryListViewModel.mekanlar
     }
 }
 //MARK: -UITableViewDataSource

@@ -39,6 +39,14 @@ class CategoryListViewModel {
         }
         return nil
     }
+    
+    func getLocations() -> [Location?] {
+        var locations = [Location?]()
+        for mekan in self.mekanlar {
+            locations.append(mekan?.geometry.location)
+        }
+        return locations
+    }
 }
 
 struct CategoryViewModel {
@@ -57,5 +65,11 @@ struct CategoryViewModel {
     }
     var icon: String? {
         return self.mekan.icon
+    }
+    var latitude: Double? {
+        return self.mekan.geometry.location.lat
+    }
+    var longitude: Double? {
+        return self.mekan.geometry.location.lng
     }
 }
