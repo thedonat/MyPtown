@@ -314,18 +314,37 @@
         <!--News-->
         <scene sceneID="krI-yx-g8N">
             <objects>
-                <viewController id="FLv-YB-Ms0" sceneMemberID="viewController">
+                <viewController id="FLv-YB-Ms0" customClass="NewsViewController" customModule="My_Ptown" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cqX-8k-Egd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dpg-hn-IZz">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="FLv-YB-Ms0" id="9gV-ZF-qP8"/>
+                                    <outlet property="delegate" destination="FLv-YB-Ms0" id="Ksq-Sk-RuA"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="hj6-Je-Tdw" firstAttribute="bottom" secondItem="dpg-hn-IZz" secondAttribute="bottom" id="62k-Wc-zQN"/>
+                            <constraint firstItem="dpg-hn-IZz" firstAttribute="top" secondItem="hj6-Je-Tdw" secondAttribute="top" id="7AY-zE-TZp"/>
+                            <constraint firstItem="dpg-hn-IZz" firstAttribute="leading" secondItem="hj6-Je-Tdw" secondAttribute="leading" id="YOf-5u-HAP"/>
+                            <constraint firstItem="hj6-Je-Tdw" firstAttribute="trailing" secondItem="dpg-hn-IZz" secondAttribute="trailing" id="sBv-a2-dnL"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="hj6-Je-Tdw"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="News" image="paperclip" catalog="system" id="yA2-zy-W9A"/>
+                    <connections>
+                        <outlet property="newsTableView" destination="dpg-hn-IZz" id="0fZ-FU-v5x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ux7-am-cv4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="467" y="1092"/>
+            <point key="canvasLocation" x="466.66666666666669" y="1091.5178571428571"/>
         </scene>
         <!--Search-->
         <scene sceneID="4Ts-be-30L">
@@ -953,6 +972,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="UBb-hP-1Dh" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ejb-YD-oMH">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="selectedImageTintColor" red="0.99607843139999996" green="0.20392156859999999" blue="0.43137254899999999" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>

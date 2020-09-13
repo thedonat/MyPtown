@@ -16,4 +16,5 @@ let ADS_MENUURL = "https://my-ptown.firebaseio.com/suggestions.json"
 let CATEGORY_MENUURL = "https://my-ptown.firebaseio.com/categories.json"
 let ATTRACTIONS_MENUURL = "https://my-ptown.firebaseio.com/attractions.json"
 let FAVPLACES = "FAVPLACES"
+let NEWS_URL = "https://newsapi.org/v2/everything?q=provincetown&from=2020-08-13&sortBy=publishedAt&apiKey=fa68fee749e04314a452180019ed7fae"
     

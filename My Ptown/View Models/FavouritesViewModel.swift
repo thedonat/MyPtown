@@ -67,4 +67,5 @@ class FavouritesViewModel {
     var placeID: String? {
         return self.venue.place_id
     }
+    
 }
