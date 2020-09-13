@@ -15,9 +15,9 @@ class NewsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        newsTableView.rowHeight = UITableView.automaticDimension
+        newsTableView.estimatedRowHeight = 500
         getData()
     }
     
@@ -29,16 +29,24 @@ class NewsViewController: UIViewController {
 
 extension NewsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return newsListViewModel.numberOfRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let vm = newsListViewModel.cellForRow(at: indexPath.row)
+        let cell = newsTableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as! NewsTableViewCell
+        cell.setView(title: vm?.title,
+                     description: vm?.articleDescription,
+                     source: vm?.sourceName,
+                     imageUrl: vm?.urlToImage)
         return cell
     }
 }
 
 extension NewsViewController: NewsListViewModelProtocol {
     func didGetNewsArticles() {
+        DispatchQueue.main.async {
+            self.newsTableView.reloadData()
+        }
     }
 }

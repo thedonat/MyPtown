@@ -44,7 +44,7 @@ struct NewsViewModel {
         return news.title
     }
     var articleDescription: String? {
-        return news.articleDescription
+        return news.description
     }
     var url: String {
         return news.url
