@@ -25,7 +25,7 @@ class NewsListViewModel {
         return nil
     }
     func getNewsArticles() {
-        let url = "https://newsapi.org/v2/everything?q=provincetown&from=2020-08-13&sortBy=publishedAt&apiKey=fa68fee749e04314a452180019ed7fae"
+        let url = "https://newsapi.org/v2/everything?q=provincetown&sortBy=publishedAt&apiKey=fa68fee749e04314a452180019ed7fae"
         WebService().performRequest(url: url) { (news: NewsData) in
             print(news.articles)
             self.newsArticles = news.articles

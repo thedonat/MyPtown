@@ -125,7 +125,9 @@ extension HomeViewController: UICollectionViewDelegate {
 //MARK: -UICollectionViewDelegateFlowLayout
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     private func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let width = (self.view.frame.size.width - 12 * 3)/2 //some width
+//        let width = (self.view.frame.size.width - 12 * 3)/2 //some width
+        let width = (self.view.frame.size.width / 2) //some width
+
         let height = width * 1.5 //ratio
         return CGSize(width: width, height: height)
     }

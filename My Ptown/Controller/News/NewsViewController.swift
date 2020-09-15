@@ -9,24 +9,26 @@
 import UIKit
 
 class NewsViewController: UIViewController {
-    
+    //MARK: -Properties
     @IBOutlet weak var newsTableView: UITableView!
     let newsListViewModel: NewsListViewModel = NewsListViewModel()
-    
+    //MARK: -Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
-        newsTableView.rowHeight = UITableView.automaticDimension
-        newsTableView.estimatedRowHeight = 500
+        configureUI()
         getData()
     }
+    //MARK: -Helpers
+    private func configureUI() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
     
-    func getData(){
+    private func getData(){
         newsListViewModel.delegate = self
         newsListViewModel.getNewsArticles()
     }
 }
-
+//MARK: -UITableViewDataSource
 extension NewsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return newsListViewModel.numberOfRows
@@ -42,7 +44,7 @@ extension NewsViewController: UITableViewDataSource {
         return cell
     }
 }
-
+//MARK: -NewsListViewModelProtocol
 extension NewsViewController: NewsListViewModelProtocol {
     func didGetNewsArticles() {
         DispatchQueue.main.async {

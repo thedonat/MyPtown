@@ -9,16 +9,21 @@
 import UIKit
 
 class AboutViewController: UIViewController {
-
+    //MARK: -Properties
     @IBOutlet weak var aboutTableView: UITableView!
     let aboutViewModel: AboutViewModel = AboutViewModel()
+    //MARK: -Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureUI()
+    }
+    //MARK: -Helpers
+    private func configureUI() {
         self.aboutTableView.tableFooterView = UIView()
         navigationController?.navigationBar.prefersLargeTitles = true
     }
 }
-
+//MARK: -UITableViewDataSource
 extension AboutViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
@@ -32,12 +37,12 @@ extension AboutViewController: UITableViewDataSource {
         } else if indexPath.row == 1 {
             cell.setView(title: "Do you have any request or suggestion? ", description: "Send us an e-mail", image: UIImage(systemName: "envelope.fill"))
         } else {
-            cell.setView(title: "We're on Instagram!", description: "Follow us to get latest updates", image: UIImage(systemName: "camera.fill"))
+            cell.setView(title: "We're on Instagram!", description: "Follow us to keep updated on whats new", image: UIImage(systemName: "camera.fill"))
         }
         return cell
     }
 }
-
+//MARK: -UITableViewDelegate
 extension AboutViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60

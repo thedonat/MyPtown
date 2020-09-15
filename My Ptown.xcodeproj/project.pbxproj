@@ -34,6 +34,10 @@
 		00D8B970250E32A900F2B4A7 /* NewsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D8B96F250E32A900F2B4A7 /* NewsData.swift */; };
 		00D8B972250E335700F2B4A7 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D8B971250E335700F2B4A7 /* NewsViewModel.swift */; };
 		00D8B974250E3BE500F2B4A7 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D8B973250E3BE500F2B4A7 /* NewsViewController.swift */; };
+		00D8B97A250E4A7A00F2B4A7 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D8B979250E4A7A00F2B4A7 /* NewsTableViewCell.swift */; };
+		00D8B97D250E8E5400F2B4A7 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D8B97C250E8E5400F2B4A7 /* AboutViewController.swift */; };
+		00D8B97F250E913A00F2B4A7 /* AboutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D8B97E250E913A00F2B4A7 /* AboutTableViewCell.swift */; };
+		00D8B981250E91B500F2B4A7 /* AboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D8B980250E91B500F2B4A7 /* AboutViewModel.swift */; };
 		00DD415424CE20AD0091584C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DD415324CE20AD0091584C /* Constants.swift */; };
 		00DFBF442454711800D70202 /* DetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DFBF432454711800D70202 /* DetailsTableViewCell.swift */; };
 		00E247C624C4F560003876DC /* CategoryMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E247C524C4F560003876DC /* CategoryMenuViewModel.swift */; };
@@ -72,6 +76,10 @@
 		00D8B96F250E32A900F2B4A7 /* NewsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsData.swift; sourceTree = "<group>"; };
 		00D8B971250E335700F2B4A7 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		00D8B973250E3BE500F2B4A7 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		00D8B979250E4A7A00F2B4A7 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		00D8B97C250E8E5400F2B4A7 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		00D8B97E250E913A00F2B4A7 /* AboutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewCell.swift; sourceTree = "<group>"; };
+		00D8B980250E91B500F2B4A7 /* AboutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
 		00DD415324CE20AD0091584C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		00DFBF432454711800D70202 /* DetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewCell.swift; sourceTree = "<group>"; };
 		00E247C524C4F560003876DC /* CategoryMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMenuViewModel.swift; sourceTree = "<group>"; };
@@ -130,14 +138,14 @@
 			path = "My Ptown";
 			sourceTree = "<group>";
 		};
-		002D9E5C24E4708E002794AC /* HomeScreen */ = {
+		002D9E5C24E4708E002794AC /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				0058943A24C5A204009F9139 /* AttractionsMenuViewModel.swift */,
 				0083F7E124C303A500C14576 /* SuggestionsViewModel.swift */,
 				00E247C524C4F560003876DC /* CategoryMenuViewModel.swift */,
 			);
-			path = HomeScreen;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		004E40B223ED543E008742AF /* Model */ = {
@@ -163,12 +171,10 @@
 		004E40B423ED5449008742AF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				00D8B976250E443100F2B4A7 /* Home */,
+				00D8B977250E443F00F2B4A7 /* Favourites */,
 				00D8B975250E43AD00F2B4A7 /* News */,
-				000E825624093AB200584541 /* HomeViewController.swift */,
-				0004E54F23EC48480082F5BF /* CategoryViewController.swift */,
-				0026EE7D23F1356B001349BE /* VenueViewContoller.swift */,
-				00F7E5F724E2BE03006B788E /* FavouritesViewController.swift */,
-				005A5AD124FF88E90008CB44 /* CategoryMapViewController.swift */,
+				00D8B97B250E8E0A00F2B4A7 /* About */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -187,6 +193,8 @@
 				00DFBF432454711800D70202 /* DetailsTableViewCell.swift */,
 				001C5227245367BE005AC07E /* ReviewsTableViewCell.swift */,
 				00460A0623EF10B6002DE262 /* CategoryTableViewCell.swift */,
+				00D8B979250E4A7A00F2B4A7 /* NewsTableViewCell.swift */,
+				00D8B97E250E913A00F2B4A7 /* AboutTableViewCell.swift */,
 				0083F7E324C3918D00C14576 /* HomeScreen */,
 			);
 			path = "Custom Cells";
@@ -214,12 +222,13 @@
 		009EBACD244F726100E16184 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				002D9E5C24E4708E002794AC /* Home */,
 				009EBACE244F728300E16184 /* CategoryViewModel.swift */,
+				005A5AD424FF8CDE0008CB44 /* MapViewModel.swift */,
 				009EBAD424505B0E00E16184 /* VenueViewModel.swift */,
 				00F7E5F924E2BE35006B788E /* FavouritesViewModel.swift */,
-				005A5AD424FF8CDE0008CB44 /* MapViewModel.swift */,
 				00D8B971250E335700F2B4A7 /* NewsViewModel.swift */,
-				002D9E5C24E4708E002794AC /* HomeScreen */,
+				00D8B980250E91B500F2B4A7 /* AboutViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -230,6 +239,33 @@
 				00D8B973250E3BE500F2B4A7 /* NewsViewController.swift */,
 			);
 			path = News;
+			sourceTree = "<group>";
+		};
+		00D8B976250E443100F2B4A7 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				000E825624093AB200584541 /* HomeViewController.swift */,
+				0004E54F23EC48480082F5BF /* CategoryViewController.swift */,
+				0026EE7D23F1356B001349BE /* VenueViewContoller.swift */,
+				005A5AD124FF88E90008CB44 /* CategoryMapViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		00D8B977250E443F00F2B4A7 /* Favourites */ = {
+			isa = PBXGroup;
+			children = (
+				00F7E5F724E2BE03006B788E /* FavouritesViewController.swift */,
+			);
+			path = Favourites;
+			sourceTree = "<group>";
+		};
+		00D8B97B250E8E0A00F2B4A7 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				00D8B97C250E8E5400F2B4A7 /* AboutViewController.swift */,
+			);
+			path = About;
 			sourceTree = "<group>";
 		};
 		076A6BCEA247610962536056 /* Pods */ = {
@@ -348,11 +384,13 @@
 			files = (
 				008A9CCE24CE1D07001C40A8 /* Extensions.swift in Sources */,
 				009EBAD1244F741100E16184 /* WebService.swift in Sources */,
+				00D8B97A250E4A7A00F2B4A7 /* NewsTableViewCell.swift in Sources */,
 				009EBAD524505B0E00E16184 /* VenueViewModel.swift in Sources */,
 				006F109C240BFDE800DD8FB9 /* VenueData.swift in Sources */,
 				00F7E5F824E2BE03006B788E /* FavouritesViewController.swift in Sources */,
 				000E825B24094D1100584541 /* AdsCollectionViewCell.swift in Sources */,
 				0004E55023EC48480082F5BF /* CategoryViewController.swift in Sources */,
+				00D8B97D250E8E5400F2B4A7 /* AboutViewController.swift in Sources */,
 				00DD415424CE20AD0091584C /* Constants.swift in Sources */,
 				004E40B623ED5884008742AF /* CategoryData.swift in Sources */,
 				0083F7E024C3034F00C14576 /* SuggestionsData.swift in Sources */,
@@ -361,11 +399,13 @@
 				0004E54C23EC48480082F5BF /* AppDelegate.swift in Sources */,
 				00F7E5FA24E2BE35006B788E /* FavouritesViewModel.swift in Sources */,
 				0083F7E224C303A500C14576 /* SuggestionsViewModel.swift in Sources */,
+				00D8B97F250E913A00F2B4A7 /* AboutTableViewCell.swift in Sources */,
 				000E825924093B2000584541 /* HomeCollectionViewCell.swift in Sources */,
 				00E247C624C4F560003876DC /* CategoryMenuViewModel.swift in Sources */,
 				00460A0823EF10B6002DE262 /* CategoryTableViewCell.swift in Sources */,
 				00D8B970250E32A900F2B4A7 /* NewsData.swift in Sources */,
 				005A5AD524FF8CDE0008CB44 /* MapViewModel.swift in Sources */,
+				00D8B981250E91B500F2B4A7 /* AboutViewModel.swift in Sources */,
 				0026EE7E23F1356B001349BE /* VenueViewContoller.swift in Sources */,
 				00DFBF442454711800D70202 /* DetailsTableViewCell.swift in Sources */,
 				0004E54E23EC48480082F5BF /* SceneDelegate.swift in Sources */,
