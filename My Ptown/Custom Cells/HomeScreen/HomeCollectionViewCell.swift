@@ -27,7 +27,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         menuLabel.text = menu
         if let menuUrl = menuUrl {
             let url = URL(string: menuUrl)
-            menuImageView.kf.setImage(with: url)
+            menuImageView.kf.setImage(with: url, placeholder: UIImage(named: "logo"))
         }
     }
 }

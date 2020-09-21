@@ -30,3 +30,16 @@ struct Location: Codable {
     let lng: Double
 }
 
+struct Data: Codable {
+    let day: [Day]
+}
+
+struct Day: Codable {
+    let name: String
+    let attractions: [Attractions]
+}
+
+struct Attractions: Codable {
+    let name: String
+    let id: Int
+}

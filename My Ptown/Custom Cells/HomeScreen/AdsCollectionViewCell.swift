@@ -25,7 +25,7 @@ class AdsCollectionViewCell: UICollectionViewCell {
         adsLabel.text = venue_description
         if let imageUrl = imageUrl {
             let url = URL(string: imageUrl)
-            adsImageView.kf.setImage(with: url)
+            adsImageView.kf.setImage(with: url, placeholder: UIImage(named: "logo"))
         }
     }
 }
