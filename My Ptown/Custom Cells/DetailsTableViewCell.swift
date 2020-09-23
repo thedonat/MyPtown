@@ -17,11 +17,13 @@ class DetailsTableViewCell: UITableViewCell {
     var venuePlaceID: String?
     var favoritePlaceIDs : [String] = []
     let defaults = UserDefaults.standard
+    
     //MARK: -Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
         configureUI()
     }
+    
     //MARK: -Helpers
     @IBAction func callVenue(_ sender: UIButton) {
         createButtonAnimation(repeatCount: 1, button: sender)
@@ -34,6 +36,7 @@ class DetailsTableViewCell: UITableViewCell {
             }
         }
     }
+    
     @IBAction func getDirections(_ sender: UIButton) {
         createButtonAnimation(repeatCount: 1, button: sender)
         let urlSchema = "http://maps.apple.com/?q="
@@ -42,6 +45,7 @@ class DetailsTableViewCell: UITableViewCell {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
+    
     @IBAction func addFavorite(_ sender: UIButton) {
         if let favouritedIDs = defaults.value(forKey: FAVPLACES) as? [String] {
                self.favoritePlaceIDs = favouritedIDs

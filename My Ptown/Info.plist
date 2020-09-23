@@ -71,5 +71,7 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>My Ptown needs your location</string>
 </dict>
 </plist>

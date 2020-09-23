@@ -69,9 +69,22 @@ extension UIView {
 }
 
 extension UIViewController{
-     func displayAlert() {
-        let alert = UIAlertController(title: "Ops", message: "There is no data", preferredStyle: .alert)
+    func noDataAlert(title: String, message: String) {
+        let alert = UIAlertController(title:  title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func noPermissionAlert () {
+        let alert = UIAlertController(title: "Location service disabled", message: "Please enable location services", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (_) in }
+        let okayAction = UIAlertAction(title: "OK", style: .default) { (_) in
+            if let url = URL.init(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(okayAction)
         present(alert, animated: true, completion: nil)
     }
     
@@ -84,6 +97,7 @@ extension UIViewController{
         }
         view.frame = headerRect
     }
+    
     func setRatingLabelColor(rating: Double) -> UIColor {
         switch rating {
         case 4.5...5:

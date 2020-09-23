@@ -108,7 +108,7 @@ extension CategoryViewController: UITableViewDelegate {
             detailVC.venueViewModel.getPlaceId = vm?.placeId
             navigationController?.pushViewController(detailVC, animated: true)
         } else {
-            displayAlert()
+            noDataAlert(title: "Ops", message: "There is no data")
         }
     }
 }

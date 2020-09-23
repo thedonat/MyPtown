@@ -16,9 +16,11 @@ class FavouritesListViewModel {
     weak var delegate: FavouritesListViewModelProtocol?
     var favouriteVenues: [VenueResult?] = []
     private let defaults = UserDefaults.standard
+    
     var numberOfRows: Int {
         return favouriteVenues.count
     }
+    
     func cellForRow(at index: Int) -> FavouritesViewModel? {
         if let favouriteVenue = self.favouriteVenues[index] {
             return FavouritesViewModel(venue: favouriteVenue)

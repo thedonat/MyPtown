@@ -23,7 +23,6 @@ class CategoryListViewModel {
         if let categoryBaseUrl = self.getMenuUrl {
             let url = "\(CATEGORY_BASEURL)\(categoryBaseUrl)"
             WebService().performRequest(url: url) { (mekanlar: CategoryData) in
-                print(mekanlar.results)
                 self.mekanlar = mekanlar.results
                 self.delegate?.didGetCategoryData()
             }
