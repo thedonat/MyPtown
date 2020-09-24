@@ -16,4 +16,4 @@ let ADS_MENUURL = "https://my-ptown.firebaseio.com/suggestions.json"
 let CATEGORY_MENUURL = "https://my-ptown.firebaseio.com/categories.json"
 let ATTRACTIONS_MENUURL = "https://my-ptown.firebaseio.com/attractions.json"
 let FAVPLACES = "FAVPLACES"
-    
+let SEARCH_URL = "https://maps.googleapis.com/maps/api/place/textsearch/json?radius=500&key=\(API_KEY)&location=42.051591,-70.185685&query=Provincetown+"

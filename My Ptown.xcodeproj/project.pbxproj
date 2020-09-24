@@ -30,6 +30,10 @@
 		009EBACF244F728300E16184 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009EBACE244F728300E16184 /* CategoryViewModel.swift */; };
 		009EBAD1244F741100E16184 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009EBAD0244F741100E16184 /* WebService.swift */; };
 		009EBAD524505B0E00E16184 /* VenueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009EBAD424505B0E00E16184 /* VenueViewModel.swift */; };
+		00CECD40251B9B1B00337299 /* SearchPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CECD3F251B9B1B00337299 /* SearchPlaceViewController.swift */; };
+		00CECD42251B9BA000337299 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CECD41251B9BA000337299 /* SearchViewModel.swift */; };
+		00CECD44251B9C2D00337299 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CECD43251B9C2D00337299 /* SearchTableViewCell.swift */; };
+		00CECD46251B9C7400337299 /* SeachData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CECD45251B9C7400337299 /* SeachData.swift */; };
 		00D8B97D250E8E5400F2B4A7 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D8B97C250E8E5400F2B4A7 /* AboutViewController.swift */; };
 		00D8B97F250E913A00F2B4A7 /* AboutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D8B97E250E913A00F2B4A7 /* AboutTableViewCell.swift */; };
 		00D8B981250E91B500F2B4A7 /* AboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D8B980250E91B500F2B4A7 /* AboutViewModel.swift */; };
@@ -67,6 +71,10 @@
 		009EBACE244F728300E16184 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		009EBAD0244F741100E16184 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		009EBAD424505B0E00E16184 /* VenueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueViewModel.swift; sourceTree = "<group>"; };
+		00CECD3F251B9B1B00337299 /* SearchPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceViewController.swift; sourceTree = "<group>"; };
+		00CECD41251B9BA000337299 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		00CECD43251B9C2D00337299 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		00CECD45251B9C7400337299 /* SeachData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeachData.swift; sourceTree = "<group>"; };
 		00D8B97C250E8E5400F2B4A7 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		00D8B97E250E913A00F2B4A7 /* AboutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewCell.swift; sourceTree = "<group>"; };
 		00D8B980250E91B500F2B4A7 /* AboutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
@@ -142,6 +150,7 @@
 				0083F7DF24C3034F00C14576 /* SuggestionsData.swift */,
 				004E40B523ED5884008742AF /* CategoryData.swift */,
 				006F109B240BFDE800DD8FB9 /* VenueData.swift */,
+				00CECD45251B9C7400337299 /* SeachData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -160,6 +169,7 @@
 			children = (
 				00D8B976250E443100F2B4A7 /* Home */,
 				00D8B977250E443F00F2B4A7 /* Favourites */,
+				009D31E4251CA09300CCF658 /* Search */,
 				00D8B97B250E8E0A00F2B4A7 /* About */,
 			);
 			path = Controller;
@@ -180,6 +190,7 @@
 				00DFBF432454711800D70202 /* DetailsTableViewCell.swift */,
 				001C5227245367BE005AC07E /* ReviewsTableViewCell.swift */,
 				00460A0623EF10B6002DE262 /* CategoryTableViewCell.swift */,
+				00CECD43251B9C2D00337299 /* SearchTableViewCell.swift */,
 				00D8B97E250E913A00F2B4A7 /* AboutTableViewCell.swift */,
 			);
 			path = "Custom Cells";
@@ -204,6 +215,14 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		009D31E4251CA09300CCF658 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				00CECD3F251B9B1B00337299 /* SearchPlaceViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		009EBACD244F726100E16184 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +231,7 @@
 				009EBAD424505B0E00E16184 /* VenueViewModel.swift */,
 				00F7E5F924E2BE35006B788E /* FavouritesViewModel.swift */,
 				00D8B980250E91B500F2B4A7 /* AboutViewModel.swift */,
+				00CECD41251B9BA000337299 /* SearchViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -373,6 +393,9 @@
 				006F109C240BFDE800DD8FB9 /* VenueData.swift in Sources */,
 				00F7E5F824E2BE03006B788E /* FavouritesViewController.swift in Sources */,
 				000E825B24094D1100584541 /* AdsCollectionViewCell.swift in Sources */,
+				00CECD42251B9BA000337299 /* SearchViewModel.swift in Sources */,
+				00CECD40251B9B1B00337299 /* SearchPlaceViewController.swift in Sources */,
+				00CECD46251B9C7400337299 /* SeachData.swift in Sources */,
 				0004E55023EC48480082F5BF /* CategoryViewController.swift in Sources */,
 				00D8B97D250E8E5400F2B4A7 /* AboutViewController.swift in Sources */,
 				00DD415424CE20AD0091584C /* Constants.swift in Sources */,
@@ -394,6 +417,7 @@
 				001C5228245367BE005AC07E /* ReviewsTableViewCell.swift in Sources */,
 				002661F724AF4F8F007EF815 /* ActivitiesCollectionViewCell.swift in Sources */,
 				000E825724093AB200584541 /* HomeViewController.swift in Sources */,
+				00CECD44251B9C2D00337299 /* SearchTableViewCell.swift in Sources */,
 				009EBACF244F728300E16184 /* CategoryViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

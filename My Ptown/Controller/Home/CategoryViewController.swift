@@ -64,7 +64,7 @@ class CategoryViewController: UIViewController, UIScrollViewDelegate {
         openMapButton.isHidden = false
         if let menuImageUrl = self.categoryListViewModel.getMenuImage, let menuName = self.categoryListViewModel.getMenuName {
             let url = URL(string: menuImageUrl)
-            menuTopImage.kf.setImage(with: url, placeholder: UIImage(named: "unicorn"))
+            menuTopImage.kf.setImage(with: url, placeholder: UIImage(named: "logo"))
             menuNameLabel.text = menuName
         }
         self.categoryTableView.isHidden = false

@@ -12,6 +12,7 @@ import CoreLocation
 
 class CategoryMapViewController: UIViewController {
     
+    //MARK: -Properties
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var mapDetailsView: UIView!
     @IBOutlet weak var placeNameLabel: UILabel!
@@ -21,12 +22,14 @@ class CategoryMapViewController: UIViewController {
     var locationMenager = CLLocationManager()
     var placeID: String? = ""
     
+    //MARK: -Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
         configureUI()
     }
     
+    //MARK: -Helpers
     func configureUI() {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         zoomToRegion()
@@ -87,6 +90,7 @@ class CategoryMapViewController: UIViewController {
     }
 }
 
+//MARK: -MKMapViewDelegate
 extension CategoryMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let reuseID = "myAnnotation"
@@ -132,6 +136,7 @@ extension CategoryMapViewController: MKMapViewDelegate {
     }
 }
 
+//MARK: -CLLocationManagerDelegate
 extension CategoryMapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation:CLLocation = locations[0] as CLLocation

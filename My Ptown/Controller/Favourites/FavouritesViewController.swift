@@ -25,7 +25,6 @@ class FavouritesViewController: UIViewController {
     private func prepareUI() {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         favouritesTableView.tableFooterView = UIView() //Deleting separators between empty rows
-        navigationController?.navigationBar.prefersLargeTitles = true
         activityIndicator.startAnimating()
         favouritesTableView.isHidden = true
     }
