@@ -17,15 +17,17 @@ class CategoryMapViewController: UIViewController {
     @IBOutlet weak var mapDetailsView: UIView!
     @IBOutlet weak var placeNameLabel: UILabel!
     @IBOutlet weak var placeRatingLabel: UILabel!
-    var categoryAddresses: [Results?] = []
-    var categoryListViewModel: CategoryListViewModel = CategoryListViewModel()
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     var locationMenager = CLLocationManager()
     var placeID: String? = ""
+    var mapViewModel: MapViewModel = MapViewModel()
     
     //MARK: -Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
+        mapViewModel.delegate = self
+        mapViewModel.createAnnotations()
         configureUI()
     }
     
@@ -33,20 +35,9 @@ class CategoryMapViewController: UIViewController {
     func configureUI() {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         zoomToRegion()
-        createAnnotations()
         addGestureRecognizer()
     }
     
-    func createAnnotations() {
-        for i in 0...categoryAddresses.count - 1 {
-            let annotation = MKPointAnnotation()
-            if let place = categoryAddresses[i] {
-                annotation.title = place.name
-                annotation.coordinate = CLLocationCoordinate2D(latitude: place.geometry.location.lat, longitude: place.geometry.location.lng)
-                mapView.addAnnotation(annotation)
-            }
-        }
-    }
     func zoomToRegion() {
         let center = CLLocationCoordinate2D(latitude: 42.051591, longitude: -70.185685)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
@@ -114,7 +105,7 @@ extension CategoryMapViewController: MKMapViewDelegate {
         } else {
             if let title = view.annotation?.title {
                 if let title = title {
-                    let info = categoryAddresses.filter { ($0?.name.contains(title)) ?? false}
+                    let info = mapViewModel.categoryAddresses.filter { ($0?.name.contains(title)) ?? false}
                     let placeInfo = info[0]
                     self.placeID = placeInfo?.place_id
                     placeNameLabel.text = placeInfo?.name
@@ -127,12 +118,20 @@ extension CategoryMapViewController: MKMapViewDelegate {
                     }
                 }
             }
+            self.bottomConstraint.constant = 96
             mapDetailsView.isHidden = false
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
         }
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         mapDetailsView.isHidden = true
+        self.bottomConstraint.constant = 16
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
     }
 }
 
@@ -148,5 +147,12 @@ extension CategoryMapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         handleAuthorisationStatus(status: status)
+    }
+}
+
+//MARK: -MapViewModelProtocol
+extension CategoryMapViewController: MapViewModelProtocol {
+    func getMapData() {
+        mapView.addAnnotation(mapViewModel.annotation)
     }
 }

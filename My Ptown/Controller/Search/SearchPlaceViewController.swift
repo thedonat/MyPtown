@@ -99,7 +99,7 @@ extension SearchPlaceViewController: UISearchBarDelegate {
             searchListViewModwl.searchResult = []
             searchTableView.reloadData()
             searchInfoLabel.isHidden = false
-            self.searchInfoLabel.text = "Text a keywoed e.g pizza"
+            self.searchInfoLabel.text = "Search for restaurant, bar or anything"
         }
     }
 }

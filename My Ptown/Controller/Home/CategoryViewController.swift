@@ -10,6 +10,7 @@ import UIKit
 import Kingfisher
 
 class CategoryViewController: UIViewController, UIScrollViewDelegate {
+    
 //MARK: -Properties
     @IBOutlet weak var categoryTableView: UITableView!
     @IBOutlet weak var menuTopImage: UIImageView!
@@ -19,6 +20,7 @@ class CategoryViewController: UIViewController, UIScrollViewDelegate {
     var categoryListViewModel: CategoryListViewModel = CategoryListViewModel()
     var headerView: UIView!
     var kTableHeaderHeight:CGFloat = 400.0
+    
 //MARK: -Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,7 @@ class CategoryViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLayoutSubviews()
         updateHeaderView(view: headerView, tableView: categoryTableView)
     }
+    
 //MARK: -Helpers
     private func getData() {
         categoryListViewModel.delegate = self
@@ -71,13 +74,16 @@ class CategoryViewController: UIViewController, UIScrollViewDelegate {
         activityIndicator.stopAnimating()
         activityIndicator.isHidden = true
     }
+    
     @IBAction func openMapButtonPressed(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mapVC = storyboard.instantiateViewController(withIdentifier: "CategoryMapViewController") as! CategoryMapViewController
         navigationController?.pushViewController(mapVC, animated: true)
-        mapVC.categoryAddresses = categoryListViewModel.mekanlar
+        mapVC.mapViewModel.categoryAddresses = categoryListViewModel.mekanlar
     }
+    
 }
+
 //MARK: -UITableViewDataSource
 extension CategoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -94,6 +100,7 @@ extension CategoryViewController: UITableViewDataSource {
         return cell
     }
 }
+
 //MARK: -UITableViewDelegate
 extension CategoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -112,6 +119,7 @@ extension CategoryViewController: UITableViewDelegate {
         }
     }
 }
+
 //MARK: -CategoryListViewModelProtocol
 extension CategoryViewController: CategoryListViewModelProtocol {
     func didGetCategoryData() {
