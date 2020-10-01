@@ -21,12 +21,14 @@ class HomeViewController: UIViewController {
     var suggestedListViewModel: SuggestionsListViewModel = SuggestionsListViewModel()
     var categoryMenuListViewModel: CategoryMenuListViewModel = CategoryMenuListViewModel()
     var attractionMenuListViewModel: AttractionsMenuListViewModel = AttractionsMenuListViewModel()
+    
     //MARK: -Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareUI()
         getData()
     }
+    
     //MARK: -Helpers
     private func getData() {
         suggestedListViewModel.delegate = self
@@ -59,6 +61,7 @@ class HomeViewController: UIViewController {
         }
     }
 }
+
 //MARK: -UICollectionViewDataSource
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -92,6 +95,7 @@ extension HomeViewController: UICollectionViewDataSource {
         return cell2
     }
 }
+
 //MARK: -UICollectionViewDelegate
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -122,16 +126,16 @@ extension HomeViewController: UICollectionViewDelegate {
         }
     }
 }
+
 //MARK: -UICollectionViewDelegateFlowLayout
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     private func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-//        let width = (self.view.frame.size.width - 12 * 3)/2 //some width
-        let width = (self.view.frame.size.width / 2) //some width
-
+        let width = (self.view.frame.size.width / 2)
         let height = width * 1.5 //ratio
         return CGSize(width: width, height: height)
     }
 }
+
 //MARK: -SuggestionsListViewModelProtocol
 extension HomeViewController: SuggestionsListViewModelProtocol {
     func didGetData() {

@@ -20,6 +20,7 @@ class CategoryMapViewController: UIViewController {
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     var locationMenager = CLLocationManager()
     var placeID: String? = ""
+    var rating: Double? = 0.0
     var mapViewModel: MapViewModel = MapViewModel()
     
     //MARK: -Lifecycle
@@ -50,10 +51,14 @@ class CategoryMapViewController: UIViewController {
     }
     
     @objc func detailViewTapped() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let detailVC = storyboard.instantiateViewController(withIdentifier: "VenueDetailsViewController") as! VenueViewContoller
-        detailVC.venueViewModel.getPlaceId = placeID
-        navigationController?.pushViewController(detailVC, animated: true)
+        if self.rating != 0.0 {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let detailVC = storyboard.instantiateViewController(withIdentifier: "VenueDetailsViewController") as! VenueViewContoller
+            detailVC.venueViewModel.getPlaceId = placeID
+            navigationController?.pushViewController(detailVC, animated: true)
+        } else {
+            noDataAlert(title: "Ops!", message: "There is no data for this place")
+        }
     }
     
     @IBAction func navButtonTapped(_ sender: UIButton) {
@@ -108,6 +113,7 @@ extension CategoryMapViewController: MKMapViewDelegate {
                     let info = mapViewModel.categoryAddresses.filter { ($0?.name.contains(title)) ?? false}
                     let placeInfo = info[0]
                     self.placeID = placeInfo?.place_id
+                    self.rating = placeInfo?.rating
                     placeNameLabel.text = placeInfo?.name
                     if let rating = placeInfo?.rating {
                         let color = setRatingLabelColor(rating: rating)

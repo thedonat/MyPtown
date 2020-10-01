@@ -33,7 +33,6 @@
 		009EBAD524505B0E00E16184 /* VenueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009EBAD424505B0E00E16184 /* VenueViewModel.swift */; };
 		00CECD40251B9B1B00337299 /* SearchPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CECD3F251B9B1B00337299 /* SearchPlaceViewController.swift */; };
 		00CECD42251B9BA000337299 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CECD41251B9BA000337299 /* SearchViewModel.swift */; };
-		00CECD44251B9C2D00337299 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CECD43251B9C2D00337299 /* SearchTableViewCell.swift */; };
 		00CECD46251B9C7400337299 /* SeachData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CECD45251B9C7400337299 /* SeachData.swift */; };
 		00D8B97D250E8E5400F2B4A7 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D8B97C250E8E5400F2B4A7 /* AboutViewController.swift */; };
 		00D8B97F250E913A00F2B4A7 /* AboutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D8B97E250E913A00F2B4A7 /* AboutTableViewCell.swift */; };
@@ -75,7 +74,6 @@
 		009EBAD424505B0E00E16184 /* VenueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueViewModel.swift; sourceTree = "<group>"; };
 		00CECD3F251B9B1B00337299 /* SearchPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceViewController.swift; sourceTree = "<group>"; };
 		00CECD41251B9BA000337299 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
-		00CECD43251B9C2D00337299 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		00CECD45251B9C7400337299 /* SeachData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeachData.swift; sourceTree = "<group>"; };
 		00D8B97C250E8E5400F2B4A7 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		00D8B97E250E913A00F2B4A7 /* AboutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewCell.swift; sourceTree = "<group>"; };
@@ -136,7 +134,7 @@
 			path = "My Ptown";
 			sourceTree = "<group>";
 		};
-		002D9E5C24E4708E002794AC /* Home */ = {
+		002D9E5C24E4708E002794AC /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
 				0058943A24C5A204009F9139 /* AttractionsMenuViewModel.swift */,
@@ -144,7 +142,7 @@
 				00E247C524C4F560003876DC /* CategoryMenuViewModel.swift */,
 				0083DE8E2524AAD200CAF6C4 /* MapViewModel.swift */,
 			);
-			path = Home;
+			path = HomeScreen;
 			sourceTree = "<group>";
 		};
 		004E40B223ED543E008742AF /* Model */ = {
@@ -170,10 +168,10 @@
 		004E40B423ED5449008742AF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				00D8B976250E443100F2B4A7 /* Home */,
-				00D8B977250E443F00F2B4A7 /* Favourites */,
-				009D31E4251CA09300CCF658 /* Search */,
-				00D8B97B250E8E0A00F2B4A7 /* About */,
+				00F7E5F724E2BE03006B788E /* FavouritesViewController.swift */,
+				00CECD3F251B9B1B00337299 /* SearchPlaceViewController.swift */,
+				00D8B97C250E8E5400F2B4A7 /* AboutViewController.swift */,
+				00D8B976250E443100F2B4A7 /* HomeScreen */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -193,7 +191,6 @@
 				00DFBF432454711800D70202 /* DetailsTableViewCell.swift */,
 				001C5227245367BE005AC07E /* ReviewsTableViewCell.swift */,
 				00460A0623EF10B6002DE262 /* CategoryTableViewCell.swift */,
-				00CECD43251B9C2D00337299 /* SearchTableViewCell.swift */,
 				00D8B97E250E913A00F2B4A7 /* AboutTableViewCell.swift */,
 			);
 			path = "Custom Cells";
@@ -218,18 +215,10 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		009D31E4251CA09300CCF658 /* Search */ = {
-			isa = PBXGroup;
-			children = (
-				00CECD3F251B9B1B00337299 /* SearchPlaceViewController.swift */,
-			);
-			path = Search;
-			sourceTree = "<group>";
-		};
 		009EBACD244F726100E16184 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				002D9E5C24E4708E002794AC /* Home */,
+				002D9E5C24E4708E002794AC /* HomeScreen */,
 				009EBACE244F728300E16184 /* CategoryViewModel.swift */,
 				009EBAD424505B0E00E16184 /* VenueViewModel.swift */,
 				00F7E5F924E2BE35006B788E /* FavouritesViewModel.swift */,
@@ -249,7 +238,7 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
-		00D8B976250E443100F2B4A7 /* Home */ = {
+		00D8B976250E443100F2B4A7 /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
 				000E825624093AB200584541 /* HomeViewController.swift */,
@@ -257,23 +246,7 @@
 				0026EE7D23F1356B001349BE /* VenueViewContoller.swift */,
 				005A5AD124FF88E90008CB44 /* CategoryMapViewController.swift */,
 			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		00D8B977250E443F00F2B4A7 /* Favourites */ = {
-			isa = PBXGroup;
-			children = (
-				00F7E5F724E2BE03006B788E /* FavouritesViewController.swift */,
-			);
-			path = Favourites;
-			sourceTree = "<group>";
-		};
-		00D8B97B250E8E0A00F2B4A7 /* About */ = {
-			isa = PBXGroup;
-			children = (
-				00D8B97C250E8E5400F2B4A7 /* AboutViewController.swift */,
-			);
-			path = About;
+			path = HomeScreen;
 			sourceTree = "<group>";
 		};
 		076A6BCEA247610962536056 /* Pods */ = {
@@ -421,7 +394,6 @@
 				001C5228245367BE005AC07E /* ReviewsTableViewCell.swift in Sources */,
 				002661F724AF4F8F007EF815 /* ActivitiesCollectionViewCell.swift in Sources */,
 				000E825724093AB200584541 /* HomeViewController.swift in Sources */,
-				00CECD44251B9C2D00337299 /* SearchTableViewCell.swift in Sources */,
 				009EBACF244F728300E16184 /* CategoryViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -572,10 +544,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V2XV9SF2Z6;
 				INFOPLIST_FILE = "My Ptown/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Donat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -591,10 +565,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V2XV9SF2Z6;
 				INFOPLIST_FILE = "My Ptown/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Donat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

@@ -31,11 +31,9 @@ class SearchListViewModel {
     func getData() {
         if let text = self.getSearchedText {
             let searchingUrl = "\(SEARCH_URL)\(text)"
-            print(searchingUrl)
             WebService().performRequest(url: searchingUrl) { (search: SearchData) in
                 self.searchResult = search.results
                 self.delegate?.didUpdateData()
-                print(search.results)
             }
         }
     }

@@ -19,6 +19,7 @@ class VenueViewContoller: UIViewController, UIScrollViewDelegate {
     var headerView: UIView!
     var kTableHeaderHeight:CGFloat = 400.0
     var venueViewModel: VenueViewModel = VenueViewModel()
+    
 //MARK: -Lifecycle
     override func viewDidLoad() {   
         super.viewDidLoad()
@@ -31,6 +32,7 @@ class VenueViewContoller: UIViewController, UIScrollViewDelegate {
         super.viewDidLayoutSubviews()
         updateHeaderView(view: headerView, tableView: venueDetailsTableView)
     }
+    
 //MARK: -Helpers
     private func getData() {
         self.venueViewModel.delegate = self
@@ -77,6 +79,7 @@ class VenueViewContoller: UIViewController, UIScrollViewDelegate {
         activityIndicator.isHidden = true
     }
 }
+
 //MARK: -UITableViewDataSource
 extension VenueViewContoller: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -107,6 +110,7 @@ extension VenueViewContoller: UITableViewDataSource {
         return cell
     }
 }
+
 //MARK: -VenueViewModelProtocol
 extension VenueViewContoller: VenueViewModelProtocol {
     func didGetVenueData() {

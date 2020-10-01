@@ -25,8 +25,8 @@ class SearchPlaceViewController: UIViewController {
     private func prepareUI() {
         navigationItem.largeTitleDisplayMode = .always
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        self.searchTableView.tableFooterView = UIView() //Deleting separators between empty rows
-        self.searchTableView.keyboardDismissMode = .onDrag //Dismissing keyboard when user scroll down or tap on the tableview.
+        self.searchTableView.tableFooterView = UIView()
+        self.searchTableView.keyboardDismissMode = .onDrag
     }
     
     private func configureUI() {
@@ -51,25 +51,30 @@ extension SearchPlaceViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = searchTableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
+        let cell = searchTableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! CategoryTableViewCell
         let vm = searchListViewModwl.cellForRow(at: indexPath.row)
-        cell.setView(icon: vm?.icon,
-                     name: vm?.name,
-                     rating: vm?.rating,
-                     totalRating: vm?.userRatingsTotal)
+        cell.setView(venueName: vm?.name,
+                    rating: vm?.rating,
+                    totalRating: vm?.userRatingsTotal,
+                    icon: vm?.icon)
         return cell
     }
 }
 
 extension SearchPlaceViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vm = self.searchListViewModwl.cellForRow(at: indexPath.row)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let venueVC = storyboard.instantiateViewController(withIdentifier: "VenueDetailsViewController") as! VenueViewContoller
-        if let placeID = vm?.placeID {
-            venueVC.venueViewModel.getPlaceId = placeID
+        if vm?.rating != 0.0 {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let venueVC = storyboard.instantiateViewController(withIdentifier: "VenueDetailsViewController") as! VenueViewContoller
+            if let placeID = vm?.placeID {
+                venueVC.venueViewModel.getPlaceId = placeID
+            }
+            self.navigationController?.pushViewController(venueVC, animated: true)
+        } else {
+            noDataAlert(title: "Ops", message: "There is no data for this place")
         }
-        self.navigationController?.pushViewController(venueVC, animated: true)
     }
 }
 
