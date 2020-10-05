@@ -13,7 +13,7 @@ class SearchPlaceViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchTableView: UITableView!
     @IBOutlet weak var searchInfoLabel: UILabel!
-    var searchListViewModwl: SearchListViewModel = SearchListViewModel()
+    var searchListViewModwl: SearchViewModel = SearchViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,7 @@ class SearchPlaceViewController: UIViewController {
     
     func getData() {
         searchListViewModwl.delegate = self
-        searchListViewModwl.getData()
+        searchListViewModwl.getSearchData()
     }
 }
 
@@ -78,8 +78,8 @@ extension SearchPlaceViewController: UITableViewDelegate {
     }
 }
 
-extension SearchPlaceViewController: SearchListViewModelProtocol {
-    func didUpdateData() {
+extension SearchPlaceViewController: SearchViewModelProtocol {
+    func didGetSearchData() {
         DispatchQueue.main.async {
             self.configureUI()
             self.searchTableView.reloadData()

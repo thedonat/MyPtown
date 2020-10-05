@@ -8,12 +8,12 @@
 
 import Foundation
 
-protocol FavouritesListViewModelProtocol: class {
+protocol FavouritesViewModelProtocol: class {
     func didGetFavouritedData()
 }
 
-class FavouritesListViewModel {
-    weak var delegate: FavouritesListViewModelProtocol?
+class FavouritesViewModel {
+    weak var delegate: FavouritesViewModelProtocol?
     var favouriteVenues: [VenueResult?] = []
     private let defaults = UserDefaults.standard
     

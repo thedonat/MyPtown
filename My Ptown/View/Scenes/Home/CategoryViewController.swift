@@ -17,7 +17,7 @@ class CategoryViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var menuNameLabel: UILabel!
     @IBOutlet weak var openMapButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    var categoryListViewModel: CategoryListViewModel = CategoryListViewModel()
+    var categoryListViewModel: CategoryViewModel = CategoryViewModel()
     var headerView: UIView!
     var kTableHeaderHeight:CGFloat = 400.0
     
@@ -37,7 +37,7 @@ class CategoryViewController: UIViewController, UIScrollViewDelegate {
 //MARK: -Helpers
     private func getData() {
         categoryListViewModel.delegate = self
-        categoryListViewModel.getData()
+        categoryListViewModel.getCategoryData()
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -121,7 +121,7 @@ extension CategoryViewController: UITableViewDelegate {
 }
 
 //MARK: -CategoryListViewModelProtocol
-extension CategoryViewController: CategoryListViewModelProtocol {
+extension CategoryViewController: CategoryViewModelProtocol {
     func didGetCategoryData() {
         DispatchQueue.main.async {
             self.categoryTableView.reloadData()

@@ -8,18 +8,18 @@
 
 import Foundation
 
-protocol CategoryListViewModelProtocol: class {
+protocol CategoryViewModelProtocol: class {
     func didGetCategoryData()
 }
 
-class CategoryListViewModel {
-    weak var delegate: CategoryListViewModelProtocol?
+class CategoryViewModel {
+    weak var delegate: CategoryViewModelProtocol?
     var getMenuName: String?
     var getMenuUrl: String?
     var getMenuImage: String?
     var mekanlar: [Results?] = []
     
-     func getData() {
+     func getCategoryData() {
         if let categoryBaseUrl = self.getMenuUrl {
             let url = "\(CATEGORY_BASEURL)\(categoryBaseUrl)"
             NetworkManager().performRequest(url: url) { [weak self] (response: NetworkResponse<CategoryData, NetworkError>) in

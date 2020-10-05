@@ -18,9 +18,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var activitiesCollectionView: UICollectionView!
     @IBOutlet weak var homeTopImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    var suggestedListViewModel: SuggestionsListViewModel = SuggestionsListViewModel()
-    var categoryMenuListViewModel: CategoryMenuListViewModel = CategoryMenuListViewModel()
-    var attractionMenuListViewModel: AttractionsMenuListViewModel = AttractionsMenuListViewModel()
+    var homeViewModel: HomeViewModel = HomeViewModel()
     
     //MARK: -Lifecycle
     override func viewDidLoad() {
@@ -31,12 +29,10 @@ class HomeViewController: UIViewController {
     
     //MARK: -Helpers
     private func getData() {
-        suggestedListViewModel.delegate = self
-        suggestedListViewModel.getSuggestionData()
-        categoryMenuListViewModel.delegate = self
-        categoryMenuListViewModel.getCategoryMenu()
-        attractionMenuListViewModel.delegate = self
-        attractionMenuListViewModel.getAttractionsMenu()
+        homeViewModel.delegate = self
+        homeViewModel.getSuggestionData()
+        homeViewModel.getCategoryMenu()
+        homeViewModel.getAttractionsMenu()
     }
     
     private func prepareUI() {
@@ -56,7 +52,7 @@ class HomeViewController: UIViewController {
         scrollView.isHidden = false
         activityIndicator.isHidden = true
         activityIndicator.stopAnimating()
-        if let key = self.suggestedListViewModel.suggestions[0]?.api {
+        if let key = self.homeViewModel.suggestionAtIndex(0)?.api {
             API_KEY = key
         }
     }
@@ -66,31 +62,31 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == adsCollectionView {
-            return suggestedListViewModel.numberOfItemInSection()
+            return homeViewModel.numberOfSuggestions()
         }
         else if collectionView == menuCollectionView {
-            return categoryMenuListViewModel.numberOfItemInSection()
+            return homeViewModel.numberOfCategory()
         }
         else {
-            return attractionMenuListViewModel.numberOfItemInSection()
+            return homeViewModel.numberOfAttractions()
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if (collectionView == menuCollectionView){
             let cell1 = menuCollectionView.dequeueReusableCell(withReuseIdentifier: "menuCollectionViewCell", for: indexPath) as! HomeCollectionViewCell
-            let vm = self.categoryMenuListViewModel.categoryAtIndex(indexPath.row)
+            let vm = self.homeViewModel.categoryAtIndex(indexPath.row)
             cell1.setView(menu: vm?.name, menuUrl: vm?.image_url)
             return cell1
         }
         else if (collectionView == activitiesCollectionView) {
             let cell3 = activitiesCollectionView.dequeueReusableCell(withReuseIdentifier: "activitiesCollectionViewCell", for: indexPath) as! ActivitiesCollectionViewCell
-            let vm = self.attractionMenuListViewModel.attractionAtIndex(indexPath.row)
+            let vm = self.homeViewModel.attractionAtIndex(indexPath.row)
             cell3.setView(name: vm?.name)
             return cell3
         }
         let cell2 = adsCollectionView.dequeueReusableCell(withReuseIdentifier: "adsCollectionViewCell", for: indexPath) as! AdsCollectionViewCell
-        let vm = self.suggestedListViewModel.suggestionAtIndex(indexPath.row)
+        let vm = self.homeViewModel.suggestionAtIndex(indexPath.row)
         cell2.setView(venue_description: vm?.venue_description, imageUrl: vm?.image_url)
         return cell2
     }
@@ -102,14 +98,14 @@ extension HomeViewController: UICollectionViewDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if collectionView == menuCollectionView {
             let categoryVC = storyboard.instantiateViewController(withIdentifier: "MenuDetailsViewController") as! CategoryViewController
-            let vm = self.categoryMenuListViewModel.categoryAtIndex(indexPath.row)
+            let vm = self.homeViewModel.categoryAtIndex(indexPath.row)
             categoryVC.categoryListViewModel.getMenuName = vm?.name
             categoryVC.categoryListViewModel.getMenuUrl = vm?.endpoint
             categoryVC.categoryListViewModel.getMenuImage = vm?.image_url
             self.navigationController?.pushViewController(categoryVC, animated: true)
         }
         else if collectionView == adsCollectionView{
-            let vm = self.suggestedListViewModel.suggestionAtIndex(indexPath.row)
+            let vm = self.homeViewModel.suggestionAtIndex(indexPath.row)
             let venueVC = storyboard.instantiateViewController(withIdentifier: "VenueDetailsViewController") as! VenueViewContoller
             if let placeID = vm?.place_id {
                 venueVC.venueViewModel.getPlaceId = placeID
@@ -117,7 +113,7 @@ extension HomeViewController: UICollectionViewDelegate {
             self.navigationController?.pushViewController(venueVC, animated: true)
         }
         else if collectionView == activitiesCollectionView {
-            let vm = self.attractionMenuListViewModel.attractionAtIndex(indexPath.row)
+            let vm = self.homeViewModel.attractionAtIndex(indexPath.row)
             let categoryVC = storyboard.instantiateViewController(withIdentifier: "MenuDetailsViewController") as! CategoryViewController
             categoryVC.categoryListViewModel.getMenuName = vm?.name
             categoryVC.categoryListViewModel.getMenuUrl = vm?.endpoint
@@ -136,26 +132,11 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-//MARK: -SuggestionsListViewModelProtocol
-extension HomeViewController: SuggestionsListViewModelProtocol {
-    func didGetData() {
+extension HomeViewController: HomeViewModelProtocol {
+    func didGetHomeData() {
         DispatchQueue.main.async {
             self.adsCollectionView.reloadData()
-        }
-    }
-}
-//MARK: -CategoryMenuListViewModelProtocol
-extension HomeViewController: CategoryMenuListViewModelProtocol {
-    func didGetMenuData() {
-        DispatchQueue.main.async {
             self.menuCollectionView.reloadData()
-        }
-    }
-}
-//MARK: -AttractionsMenuListViewModelProtocol
-extension HomeViewController: AttractionsMenuListViewModelProtocol {
-    func didGetAttractionsData() {
-        DispatchQueue.main.async {
             self.activitiesCollectionView.reloadData()
             self.configureUI()
         }

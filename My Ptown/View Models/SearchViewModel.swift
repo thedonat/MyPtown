@@ -8,12 +8,12 @@
 
 import Foundation
 
-protocol SearchListViewModelProtocol: class {
-    func didUpdateData()
+protocol SearchViewModelProtocol: class {
+    func didGetSearchData()
 }
 
-class SearchListViewModel {
-    weak var delegate: SearchListViewModelProtocol?
+class SearchViewModel {
+    weak var delegate: SearchViewModelProtocol?
     var searchResult: [SearchResult?] = []
     var getSearchedText: String?
     
@@ -25,7 +25,7 @@ class SearchListViewModel {
         return searchResult[index]
     }
     
-    func getData() {
+    func getSearchData() {
         if let text = self.getSearchedText {
             let searchingUrl = "\(SEARCH_URL)\(text)"
             NetworkManager().performRequest(url: searchingUrl) { [weak self] (response: NetworkResponse<SearchData, NetworkError>) in
@@ -34,7 +34,7 @@ class SearchListViewModel {
                 switch response {
                 case .success(let result):
                     self.searchResult = result.results
-                    self.delegate?.didUpdateData()
+                    self.delegate?.didGetSearchData()
                     break
                 case .failure(let error):
                     print(error.errorMessage)

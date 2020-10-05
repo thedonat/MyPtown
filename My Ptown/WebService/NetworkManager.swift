@@ -9,15 +9,18 @@
 import Foundation
 
 struct NetworkManager {
+    
     func performRequest<T: Decodable>(url: String, completion: @escaping (NetworkResponse<T, NetworkError>) -> Void) {
         if let url = URL(string: url) {
             URLSession.shared.dataTask(with: url) { (data, response, error) in
                 if error != nil {
-                    print("ERROR", error?.localizedDescription as Any)
+                    completion(NetworkResponse.failure(.network))
                 } else {
                     if let safeData = data {
                         if let decodedData = try? JSONDecoder().decode(T.self, from: safeData) {
                             completion(NetworkResponse.success(decodedData))
+                        } else {
+                            completion(NetworkResponse.failure(.decoding))
                         }
                     }
                 }

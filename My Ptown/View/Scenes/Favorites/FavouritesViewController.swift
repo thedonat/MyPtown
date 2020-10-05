@@ -15,7 +15,7 @@ class FavouritesViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var noFavouritesLabel: UILabel!
     @IBOutlet weak var noDataImage: UIImageView!
-    var favouritesListViewModel: FavouritesListViewModel = FavouritesListViewModel()
+    var favouritesListViewModel: FavouritesViewModel = FavouritesViewModel()
     
     //MARK: -Lifecycle
     override func viewDidLoad() {
@@ -77,7 +77,7 @@ extension FavouritesViewController: UITableViewDelegate {
 }
 
 //MARK: -FavouritesListViewModelProtocol
-extension FavouritesViewController: FavouritesListViewModelProtocol {
+extension FavouritesViewController: FavouritesViewModelProtocol {
     func didGetFavouritedData() {
         DispatchQueue.main.async {
             self.favouritesTableView.reloadData()
