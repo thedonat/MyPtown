@@ -56,7 +56,7 @@ class HomeViewController: UIViewController {
         scrollView.isHidden = false
         activityIndicator.isHidden = true
         activityIndicator.stopAnimating()
-        if let key = self.suggestedListViewModel.suggestionAtIndex(0)?.key {
+        if let key = self.suggestedListViewModel.suggestions[0]?.api {
             API_KEY = key
         }
     }

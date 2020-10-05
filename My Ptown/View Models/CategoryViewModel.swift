@@ -22,9 +22,18 @@ class CategoryListViewModel {
      func getData() {
         if let categoryBaseUrl = self.getMenuUrl {
             let url = "\(CATEGORY_BASEURL)\(categoryBaseUrl)"
-            WebService().performRequest(url: url) { (mekanlar: CategoryData) in
-                self.mekanlar = mekanlar.results
-                self.delegate?.didGetCategoryData()
+            NetworkManager().performRequest(url: url) { [weak self] (response: NetworkResponse<CategoryData, NetworkError>) in
+                guard let self = self else { return }
+                
+                switch response {
+                case .success(let result):
+                    self.mekanlar = result.results
+                    self.delegate?.didGetCategoryData()
+                    break
+                case .failure(let error):
+                    print(error.errorMessage)
+                }
+
             }
         }
     }
@@ -33,11 +42,8 @@ class CategoryListViewModel {
         return self.mekanlar.count
     }
     
-    func ptownAtIndex(_ index: Int) -> CategoryViewModel? {
-        if let mekan = self.mekanlar[index] {
-            return CategoryViewModel(mekan: mekan)
-        }
-        return nil
+    func ptownAtIndex(_ index: Int) -> Results? {
+       return mekanlar[index]
     }
     
     func getLocations() -> [Location?] {
@@ -46,30 +52,5 @@ class CategoryListViewModel {
             locations.append(mekan?.geometry.location)
         }
         return locations
-    }
-}
-
-struct CategoryViewModel {
-    let mekan: Results
-    var name: String {
-        return self.mekan.name
-    }
-    var placeId : String? {
-        return mekan.place_id
-    }
-    var rating: Double? {
-        return self.mekan.rating
-    }
-    var totalRating: Int? {
-        return self.mekan.user_ratings_total
-    }
-    var icon: String? {
-        return self.mekan.icon
-    }
-    var latitude: Double? {
-        return self.mekan.geometry.location.lat
-    }
-    var longitude: Double? {
-        return self.mekan.geometry.location.lng
     }
 }

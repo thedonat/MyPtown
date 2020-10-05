@@ -14,36 +14,29 @@ protocol CategoryMenuListViewModelProtocol: class {
 
 class CategoryMenuListViewModel {
     weak var delegate: CategoryMenuListViewModelProtocol?
-    var categories: [CategoryMenuResult?] = []
+    private var categories: [CategoryMenuResult?] = []
     
     func numberOfItemInSection() -> Int {
         return self.categories.count
     }
     
-    func categoryAtIndex(_ index: Int) -> CategoryMenuViewModel? {
-        if let category = self.categories[index] {
-            return CategoryMenuViewModel(category: category)
-        }
-        return nil
+    func categoryAtIndex(_ index: Int) -> CategoryMenuResult? {
+        return categories[index]
     }
     
     func getCategoryMenu() {
-        WebService().performRequest(url: CATEGORY_MENUURL) { (category: CategoryMenuData) in
-            self.categories = category.results
-            self.delegate?.didGetMenuData()
+        NetworkManager().performRequest(url: CATEGORY_MENUURL) { [weak self] (response: NetworkResponse<CategoryMenuData, NetworkError>) in
+            guard let self = self else { return }
+              
+              switch response {
+              case .success(let result):
+                  self.categories = result.results
+                  self.delegate?.didGetMenuData()
+                  break
+              case .failure(let error):
+                  print(error.errorMessage)
+              }
+            
         }
-    }
-}
-
-struct CategoryMenuViewModel {
-    let category: CategoryMenuResult
-    var image_url: String {
-        return self.category.image_url
-    }
-    var name: String {
-        return self.category.name
-    }
-    var endpoint: String {
-        return self.category.endpoint
     }
 }

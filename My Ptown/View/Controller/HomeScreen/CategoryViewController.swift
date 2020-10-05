@@ -95,7 +95,7 @@ extension CategoryViewController: UITableViewDataSource {
         let vm = self.categoryListViewModel.ptownAtIndex(indexPath.row)
         cell.setView(venueName: vm?.name,
                      rating: vm?.rating,
-                     totalRating: vm?.totalRating,
+                     totalRating: vm?.user_ratings_total,
                      icon: vm?.icon)
         return cell
     }
@@ -112,7 +112,7 @@ extension CategoryViewController: UITableViewDelegate {
         let detailVC = storyboard.instantiateViewController(withIdentifier: "VenueDetailsViewController") as! VenueViewContoller
         if categoryListViewModel.ptownAtIndex(indexPath.row)?.rating != 0.0 {
             let vm = self.categoryListViewModel.ptownAtIndex(indexPath.row)
-            detailVC.venueViewModel.getPlaceId = vm?.placeId
+            detailVC.venueViewModel.getPlaceId = vm?.place_id
             navigationController?.pushViewController(detailVC, animated: true)
         } else {
             noDataAlert(title: "Ops", message: "There is no data for this place")

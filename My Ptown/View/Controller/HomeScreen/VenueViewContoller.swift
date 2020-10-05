@@ -63,17 +63,16 @@ class VenueViewContoller: UIViewController, UIScrollViewDelegate {
     }
     
     private func configureUI() {
-        let photo_url = self.venueViewModel.venue_photos
-        if let photoURL = photo_url {
-            let imageUrl = "\(VENUE_IMAGEURL)\(photoURL)"
+        if let photo_url = self.venueViewModel.venue?.photos?.first?.photo_reference {
+            let imageUrl = "\(VENUE_IMAGEURL)\(photo_url)"
             let url = URL(string: imageUrl)
             self.venueTopImage.kf.setImage(with: url, placeholder: UIImage(named: "logo"))
-        }
-        else {
+
+        } else {
             self.venueTopImage.image = UIImage(named: "logo")
         }
         venueDetailsTableView.isHidden = false
-        venueNameLabel.text = venueViewModel.name
+        venueNameLabel.text = venueViewModel.venue?.name
         venueLabelView.fadeView(percentage: 0.7)
         activityIndicator.stopAnimating()
         activityIndicator.isHidden = true
@@ -83,29 +82,35 @@ class VenueViewContoller: UIViewController, UIScrollViewDelegate {
 //MARK: -UITableViewDataSource
 extension VenueViewContoller: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return venueViewModel.venue_reviews.count + 1
+        if let reviews = venueViewModel.venue?.reviews?.count {
+            return reviews + 1
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         if indexPath.item == 0 {
             let detailsCell = venueDetailsTableView.dequeueReusableCell(withIdentifier: "DetailsTableViewCell", for: indexPath) as! DetailsTableViewCell
-            detailsCell.setDetails(name: self.venueViewModel.name,
-                                   phone_number: self.venueViewModel.phone_number,
-                                   vicinity: self.venueViewModel.vicinity,
-                                   placeID: self.venueViewModel.placeID)
+            detailsCell.setDetails(name: self.venueViewModel.venue?.name,
+                                   phone_number: self.venueViewModel.venue?.formatted_phone_number,
+                                   vicinity: self.venueViewModel.venue?.vicinity,
+                                   placeID: self.venueViewModel.venue?.place_id)
             cell = detailsCell
         }
         else {
             let reviewsCell = venueDetailsTableView.dequeueReusableCell(withIdentifier: "ReviewsTableViewCell", for: indexPath) as! ReviewsTableViewCell
-            let venueVM = self.venueViewModel.venue_reviews[indexPath.row-1]
-            reviewsCell.indentationLevel = 2;
-            reviewsCell.setReviews(time: venueVM.relative_time_description,
-                                   author: venueVM.author_name,
-                                   comment: venueVM.text,
-                                   profile_photo_url: venueVM.profile_photo_url,
-                                   rate: venueVM.rating)
-            cell = reviewsCell
+            if let reviews = venueViewModel.venue?.reviews {
+                let venueVM = reviews[indexPath.row - 1]
+                reviewsCell.indentationLevel = 2;
+                reviewsCell.setReviews(time: venueVM.relative_time_description,
+                                       author: venueVM.author_name,
+                                       comment: venueVM.text,
+                                       profile_photo_url: venueVM.profile_photo_url,
+                                       rate: venueVM.rating)
+                cell = reviewsCell
+            }
         }
         return cell
     }

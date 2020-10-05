@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct WebService {
-    func performRequest<T: Decodable>(url: String, completion: @escaping (T) -> Void) {
+struct NetworkManager {
+    func performRequest<T: Decodable>(url: String, completion: @escaping (NetworkResponse<T, NetworkError>) -> Void) {
         if let url = URL(string: url) {
             URLSession.shared.dataTask(with: url) { (data, response, error) in
                 if error != nil {
@@ -17,7 +17,7 @@ struct WebService {
                 } else {
                     if let safeData = data {
                         if let decodedData = try? JSONDecoder().decode(T.self, from: safeData) {
-                            completion(decodedData)
+                            completion(NetworkResponse.success(decodedData))
                         }
                     }
                 }

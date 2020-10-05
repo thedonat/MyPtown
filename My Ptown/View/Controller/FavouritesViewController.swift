@@ -9,18 +9,21 @@
 import UIKit
 
 class FavouritesViewController: UIViewController {
+    
     //MARK: -Properties
     @IBOutlet weak var favouritesTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var noFavouritesLabel: UILabel!
     @IBOutlet weak var noDataImage: UIImageView!
     var favouritesListViewModel: FavouritesListViewModel = FavouritesListViewModel()
+    
     //MARK: -Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareUI()
         getData()
     }
+    
     //MARK: -Helpers
     private func prepareUI() {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -28,6 +31,7 @@ class FavouritesViewController: UIViewController {
         activityIndicator.startAnimating()
         favouritesTableView.isHidden = true
     }
+    
     private func configureUI() {
         activityIndicator.isHidden = true
         activityIndicator.stopAnimating()
@@ -37,11 +41,13 @@ class FavouritesViewController: UIViewController {
             noDataImage.isHidden = true
         }
     }
+    
     private func getData() {
         favouritesListViewModel.delegate = self
         favouritesListViewModel.getFavouritedVenues()
     }
 }
+
 //MARK: -UITableViewDataSource
 extension FavouritesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -52,19 +58,20 @@ extension FavouritesViewController: UITableViewDataSource {
         let cell = favouritesTableView.dequeueReusableCell(withIdentifier: "FavouritesTableViewCell", for: indexPath) as! CategoryTableViewCell
         let vm = favouritesListViewModel.cellForRow(at: indexPath.row)
         cell.setFavouritesView(venueName: vm?.name,
-                               imageURL: vm?.venue_photos,
+                               imageURL: vm?.photos?.first?.photo_reference,
                                vicinity: vm?.vicinity,
                                rating: vm?.rating)
         return cell
     }
 }
+
 //MARK: -UITableViewDelegate
 extension FavouritesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailVC = storyboard.instantiateViewController(withIdentifier: "VenueDetailsViewController") as! VenueViewContoller
         let vm = self.favouritesListViewModel.cellForRow(at: indexPath.row)
-        detailVC.venueViewModel.getPlaceId = vm?.placeID
+        detailVC.venueViewModel.getPlaceId = vm?.place_id
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }

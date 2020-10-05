@@ -20,35 +20,23 @@ class SuggestionsListViewModel {
         return self.suggestions.count
     }
     
-    func suggestionAtIndex(_ index: Int) -> SuggestionsViewModel? {
-        if let suggestion = self.suggestions[index] {
-            return SuggestionsViewModel(suggestion: suggestion)
-        }
-        return nil
+    func suggestionAtIndex(_ index: Int) -> SuggestionMenuResult? {
+        return suggestions[index]
     }
+    
     func getSuggestionData() {
-        WebService().performRequest(url: ADS_MENUURL) { (suggesions: SuggestionsMenuData) in
-            self.suggestions = suggesions.results
-            self.delegate?.didGetData()
-        }
-    }
-}
+        NetworkManager().performRequest(url: ADS_MENUURL) { [weak self] (response: NetworkResponse<SuggestionsMenuData, NetworkError>) in
+            guard let self = self else { return }
+            
+            switch response {
+            case .success(let result):
+                self.suggestions = result.results
+                self.delegate?.didGetData()
+                break
+            case .failure(let error):
+                print(error.errorMessage)
+            }
 
-struct SuggestionsViewModel {
-    let suggestion: SuggestionMenuResult
-    var image_url: String {
-        return self.suggestion.image_url
-    }
-    var venue_description: String {
-        return self.suggestion.venue_description
-    }
-    var name: String {
-        return self.suggestion.name
-    }
-    var place_id: String {
-        return self.suggestion.place_id
-    }
-    var key: String {
-        return self.suggestion.api
+        }
     }
 }

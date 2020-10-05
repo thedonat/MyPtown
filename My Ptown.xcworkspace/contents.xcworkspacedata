@@ -4,6 +4,14 @@
    <FileRef
       location = "group:My Ptown.xcodeproj">
    </FileRef>
+   <Group
+      location = "group:My Ptown/.."
+      name = "Frameworks">
+      <FileRef
+         location = "build:libPods-My Ptown.a"
+         assignedFileDataType = "com.apple.mach-o-binary">
+      </FileRef>
+   </Group>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>

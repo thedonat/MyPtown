@@ -7,43 +7,38 @@
 //
 
 import Foundation
+
 protocol AttractionsMenuListViewModelProtocol: class {
     func didGetAttractionsData()
 }
 
 class AttractionsMenuListViewModel {
     weak var delegate: AttractionsMenuListViewModelProtocol?
-    var attractions: [AttractionsMenuResult?] = []
-    
-    func getAttractionsMenu(){
-        WebService().performRequest(url: ATTRACTIONS_MENUURL) { (attraction: AttractionsMenuData) in
-            self.attractions = attraction.results
-            self.delegate?.didGetAttractionsData()
-        }
-    }
+    private var attractions: [AttractionsMenuResult?] = []
     
     func numberOfItemInSection() -> Int {
         return self.attractions.count
     }
     
-    func attractionAtIndex(_ index: Int) -> AttractionsMenuViewModel? {
-        
-        if let attraction = self.attractions[index] {
-            return AttractionsMenuViewModel(attraction: attraction)
+    func attractionAtIndex(_ index: Int) -> AttractionsMenuResult? {
+        return attractions[index]
+    }
+    
+    func getAttractionsMenu(){
+        NetworkManager().performRequest(url: ATTRACTIONS_MENUURL) { [weak self] (response: NetworkResponse<AttractionsMenuData, NetworkError>) in
+            guard let self = self else { return }
+
+            switch response {
+            case .success(let result):
+                self.attractions = result.results
+                self.delegate?.didGetAttractionsData()
+                break
+            case .failure(let error):
+                print(error.errorMessage)
+            }
+            
         }
-        return nil
     }
 }
 
-struct AttractionsMenuViewModel {
-    let attraction: AttractionsMenuResult
-    var name: String {
-        return self.attraction.name
-    }
-    var endpoint: String {
-        return self.attraction.endpoint
-    }
-    var image_url: String {
-        return self.attraction.image_url
-    }
-}
+

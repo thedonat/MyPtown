@@ -24,43 +24,19 @@ class VenueViewModel {
     func getVenueDetails() {
         if let placeID = self.getPlaceId {
             let venueUrl = "\(VENUE_BASEURL)\(placeID)"
-            WebService().performRequest(url: venueUrl) { (venue: VenueData) in
-                self.venue = venue.result
-                self.delegate?.didGetVenueData()
+            NetworkManager().performRequest(url: venueUrl) { [weak self] (response: NetworkResponse<VenueData, NetworkError>) in
+                guard let self = self else { return }
+                
+                switch response {
+                case .success(let result):
+                    self.venue = result.result
+                    self.delegate?.didGetVenueData()
+                    break
+                case .failure(let error):
+                    print(error.errorMessage)
+                }
+
             }
         }
-    }
-    
-    var name: String? {
-        return venue?.name
-    }
-    var rating: Double? {
-        return venue?.rating
-    }
-    var placeID: String? {
-        return venue?.place_id
-    }
-    var phone_number: String? {
-        return venue?.formatted_phone_number
-    }
-    var price_level: Int? {
-        return venue?.pricelevel
-    }
-    var vicinity: String?{
-        return venue?.vicinity
-    }
-    var venue_photos: String? {
-        var photo_url = ""
-        if let photos = self.venue?.photos {
-            photo_url = photos[0].photo_reference
-        }
-        return photo_url
-    }
-    var venue_reviews: [VenueReviews] {
-        var reviews: [VenueReviews] = []
-        if let review = venue?.reviews {
-            reviews = review
-        }
-        return reviews
     }
 }

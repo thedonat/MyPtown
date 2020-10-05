@@ -55,7 +55,7 @@ extension SearchPlaceViewController: UITableViewDataSource {
         let vm = searchListViewModwl.cellForRow(at: indexPath.row)
         cell.setView(venueName: vm?.name,
                     rating: vm?.rating,
-                    totalRating: vm?.userRatingsTotal,
+                    totalRating: vm?.user_ratings_total,
                     icon: vm?.icon)
         return cell
     }
@@ -68,7 +68,7 @@ extension SearchPlaceViewController: UITableViewDelegate {
         if vm?.rating != 0.0 {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let venueVC = storyboard.instantiateViewController(withIdentifier: "VenueDetailsViewController") as! VenueViewContoller
-            if let placeID = vm?.placeID {
+            if let placeID = vm?.place_id {
                 venueVC.venueViewModel.getPlaceId = placeID
             }
             self.navigationController?.pushViewController(venueVC, animated: true)

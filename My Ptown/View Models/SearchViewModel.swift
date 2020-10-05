@@ -21,47 +21,25 @@ class SearchListViewModel {
         return searchResult.count
     }
     
-    func cellForRow(at index: Int) -> SearchViewModel? {
-        if let place = self.searchResult[index] {
-            return SearchViewModel(searchedPlace: place)
-        }
-        return nil
+    func cellForRow(at index: Int) -> SearchResult? {
+        return searchResult[index]
     }
     
     func getData() {
         if let text = self.getSearchedText {
             let searchingUrl = "\(SEARCH_URL)\(text)"
-            WebService().performRequest(url: searchingUrl) { (search: SearchData) in
-                self.searchResult = search.results
-                self.delegate?.didUpdateData()
+            NetworkManager().performRequest(url: searchingUrl) { [weak self] (response: NetworkResponse<SearchData, NetworkError>) in
+                guard let self = self else { return }
+                
+                switch response {
+                case .success(let result):
+                    self.searchResult = result.results
+                    self.delegate?.didUpdateData()
+                    break
+                case .failure(let error):
+                    print(error.errorMessage)
+                }
             }
         }
-    }
-}
-
-class SearchViewModel {
-    let searchedPlace: SearchResult
-    init(searchedPlace: SearchResult) {
-        self.searchedPlace = searchedPlace
-    }
-    
-    var icon: String? {
-        return searchedPlace.icon
-    }
-    
-    var name: String? {
-        return searchedPlace.name
-    }
-    
-    var placeID: String? {
-        return searchedPlace.place_id
-    }
-
-    var rating: Double? {
-        return searchedPlace.rating
-    }
-
-    var userRatingsTotal: Int? {
-        return searchedPlace.user_ratings_total
     }
 }
