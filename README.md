@@ -17,4 +17,4 @@ Sketch, Swift, MVVM, RESTful API, CocoaPods
 
 App Store link:  https://apps.apple.com/us/app/my-ptown/id1527977001
 
-![myptown-appstore](https://user-images.githubusercontent.com/32302808/90985961-ff9c4b00-e587-11ea-953c-baf5ce01da3c.png)
+![Ekran Resmi 2020-10-01 19 19 11](https://user-images.githubusercontent.com/32302808/94835937-0a65bd80-041b-11eb-98bb-a95ca21fde6e.png)
