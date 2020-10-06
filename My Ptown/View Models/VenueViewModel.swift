@@ -24,7 +24,7 @@ class VenueViewModel {
     func getVenueDetails() {
         if let placeID = self.getPlaceId {
             let venueUrl = "\(VENUE_BASEURL)\(placeID)"
-            NetworkManager().performRequest(url: venueUrl) { [weak self] (response: NetworkResponse<VenueData, NetworkError>) in
+            NetworkManager().performRequest(url: venueUrl) { [weak self] (response: Result<VenueData, NetworkError>) in
                 guard let self = self else { return }
                 
                 switch response {

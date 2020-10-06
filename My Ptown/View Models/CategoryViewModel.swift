@@ -22,7 +22,7 @@ class CategoryViewModel {
      func getCategoryData() {
         if let categoryBaseUrl = self.getMenuUrl {
             let url = "\(CATEGORY_BASEURL)\(categoryBaseUrl)"
-            NetworkManager().performRequest(url: url) { [weak self] (response: NetworkResponse<CategoryData, NetworkError>) in
+            NetworkManager().performRequest(url: url) { [weak self] (response: Result<CategoryData, NetworkError>) in
                 guard let self = self else { return }
                 
                 switch response {

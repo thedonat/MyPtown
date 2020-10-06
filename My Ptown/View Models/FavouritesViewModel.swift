@@ -30,7 +30,7 @@ class FavouritesViewModel {
         if let favouritedPlaceIDs = defaults.value(forKey: FAVPLACES) as? [String] {
             for id in favouritedPlaceIDs {
                 let url = "\(VENUE_BASEURL)\(id)"
-                NetworkManager().performRequest(url: url, completion: { [weak self] (response: NetworkResponse<VenueData, NetworkError>) in
+                NetworkManager().performRequest(url: url, completion: { [weak self] (response: Result<VenueData, NetworkError>) in
                     guard let self = self else { return }
                     
                     switch response {

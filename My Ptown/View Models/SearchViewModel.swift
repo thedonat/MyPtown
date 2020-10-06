@@ -28,7 +28,7 @@ class SearchViewModel {
     func getSearchData() {
         if let text = self.getSearchedText {
             let searchingUrl = "\(SEARCH_URL)\(text)"
-            NetworkManager().performRequest(url: searchingUrl) { [weak self] (response: NetworkResponse<SearchData, NetworkError>) in
+            NetworkManager().performRequest(url: searchingUrl) { [weak self] (response: Result<SearchData, NetworkError>) in
                 guard let self = self else { return }
                 
                 switch response {

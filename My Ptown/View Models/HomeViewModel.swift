@@ -44,7 +44,7 @@ class HomeViewModel {
     }
     
     func getAttractionsMenu(){
-        NetworkManager().performRequest(url: ATTRACTIONS_MENUURL) { [weak self] (response: NetworkResponse<AttractionsMenuData, NetworkError>) in
+        NetworkManager().performRequest(url: ATTRACTIONS_MENUURL) { [weak self] (response: Result<AttractionsMenuData, NetworkError>) in
             guard let self = self else { return }
             
             switch response {
@@ -59,7 +59,7 @@ class HomeViewModel {
     }
     
     func getSuggestionData() {
-        NetworkManager().performRequest(url: ADS_MENUURL) { [weak self] (response: NetworkResponse<SuggestionsMenuData, NetworkError>) in
+        NetworkManager().performRequest(url: ADS_MENUURL) { [weak self] (response: Result<SuggestionsMenuData, NetworkError>) in
             guard let self = self else { return }
             
             switch response {
@@ -75,7 +75,7 @@ class HomeViewModel {
     }
     
     func getCategoryMenu() {
-        NetworkManager().performRequest(url: CATEGORY_MENUURL) { [weak self] (response: NetworkResponse<CategoryMenuData, NetworkError>) in
+        NetworkManager().performRequest(url: CATEGORY_MENUURL) { [weak self] (response: Result<CategoryMenuData, NetworkError>) in
             guard let self = self else { return }
             
             switch response {
